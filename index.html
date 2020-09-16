@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Elston</title>
+  <input type="button" onclick="hide('before')" id="before" value="Before playing the game, please make sure to close all sidebars! (Click anywhere to continue)"</input>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<h1>Elston's Mining Sim</h1>
+</head>
+
+<body>
+	<script src="script.js"></script>
+	<p id="actiontitle">Action Log</p>
+	<div class="actions">
+		<p id="action0"></p>
+		<p id="action1"></p>
+		<p id="action2"></p>
+		<p id="action3"></p>
+		<p id="action4"></p>
+    <p id="action5"></p>
+    <p id="action6"></p>
+    <p id="action7"></p>
+    <p id="action8"></p>
+    <p id="action9"></p>
+  </div>
+
+  <input type="button" id="inventorytitle" value="Show Inventory" onclick="invbutton()"></input>
+
+<div class="inventory" id="inventory">
+  <div class="inventoryimg">
+    <img id="stoneimg" src="https://vignette.wikia.nocookie.net/minecraft/images/0/03/StoneNew.png/revision/latest?cb=20190902225143" width="25" height="25"></img>
+    <br>
+    <img id="coalimg" src="https://vignette.wikia.nocookie.net/minecraft/images/b/b3/CoalOreNew.png/revision/latest?cb=20190907231239" width="25" height="25"></img>
+    <br>
+    <img id="ironimg" src="https://vignette.wikia.nocookie.net/minecraft/images/5/50/IronOreNew.png/revision/latest?cb=20190907225306" width="25" height="25"></img>
+    <br>
+    <img id="titaniumimg" src="https://i7.pngguru.com/preview/37/158/508/tungsten-metal-steel-titanium-wolframstahl-others.jpg" width="25" height="25"></img>
+    <br>
+    <img id="tinimg" src="https://t1.rbxcdn.com/01d45ab73dde795654f26daa74355309" width="25" height="25"></img>
+    <br>
+    <img id="silverimg" src="https://img1.pnghut.com/23/11/23/vpqj8J5CPu/chuquicamata-copper-gold-nugget-silver-mineral.jpg" width="25" height="25"></img>
+    <br>
+    <img id="copperimg" src="https://vignette.wikia.nocookie.net/fortnite/images/9/9e/Icon_Metal_Copper.png/revision/latest/top-crop/width/360/height/360?cb=20170806015414" width="25" height="25"></img>
+    <br>
+    <img src="https://i1.pngguru.com/preview/874/949/140/minecraft-icon-1-4-3d-gold-ore-square-black-and-yellow-cube-art-png-clipart.jpg" width="25" height="25"></img>
+    <br>
+    <img id="diamondimg" src="https://img.pngio.com/pixilart-minecraft-diamond-by-colorful-diamond-png-minecraft-1184_1184.png" width="25" height="25"></img>
+    <br>
+    <img src="https://img.pngio.com/minecraft-emerald-png-png-all-minecraft-emerald-png-620_620.png" height="25" width="25" ></img>
+    <br>
+    <img src="https://vignette.wikia.nocookie.net/thetekkit/images/8/88/Uranium_Ore.png/revision/latest/top-crop/width/360/height/450?cb=20121011054131" width="25" height="25"></img>
+  </div>
+
+
+  <div class="inventoryitems">
+    <p id="stone">Stone x0</p>
+    <p id="coal">Coal x0</p>
+    <p id="iron">Iron x0</p>
+    <p id="titanium">Titanium x0</p>
+    <p id="tin">Tin x0</p>
+    <p id="silver">Silver x0</p>
+    <p id="copper">Copper x0</p>
+    <p id="gold">Gold x0</p>
+    <p id="diamond">Diamond x0</p>
+    <p id="emerald">Emerald x0</p>
+    <p id="uranium">Uranium x0</p>
+  </div>
+</div>
+<img src="https://icon-library.com/images/pickaxe-icon/pickaxe-icon-17.jpg" id="pickaxe" height="150" width="150"></img>
+<input type="button" id="mine" value="Click me to mine!" onclick="mine()"></input>
+
+<div class="stuff">
+<p id="money">Money: $0</p>
+<p id="autominecard">Automine Cards: 1</p>
+</div>
+<div class="automine">
+  <img src="https://i1.sndcdn.com/artworks-000214772235-9ldzsb-t500x500.jpg" width="150" height="150" id="minestatus"></img>
+  <input type="button" id="autominetext" value="Automine (Costs 1 automine card)" onclick="automine()"></p>
+</div>
+<input type="button" id="sell" value="Sell Ores" onclick="sell()"></input>
+<div class="menu">
+<button type="button" id="shopyeet" onclick="show('shop')">Shop Menu</input>
+<button type="button" id="helpbutton" onclick="show('help')">Help (Useful Information)</input>
+</div>
+
+<div class="Help" id="helpscreen">
+  <p id="helpmenu">Help And Information Menu</p>
+  <div id="information">
+    <p>~Automine lasts for 33 minutes.</p>
+    <p>~Ores are sorted by rarity as seen in Inventory</p>
+    <p>~Automine cards can be found by mining with a 0.006% chance of being mined.</p>
+    <p>~The rarest ore in the game, Uranium, has a 0.05% chance of being found without any upgrades</p>
+  </div>
+  <button type="button" id="close" onclick="hide('closehelp')">X</button>
+</div>
+
+<div id="shopmain">
+  <p id="shoptitle">The Mine Shop</p>
+  <div id="shopimage">
+    <img src="data:image/png;base64,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" width="35" height="35"></img>
+  </div>
+  <div id="shoptext">
+    <div class="rarity">Upgrade Rarity
+    <span class="raritytip">Increases the chance to mine rarer ores</span></div>
+  </div>
+  <div id="shopbuy">
+    <button type="button">Upgrade</button>
+  </div>
+  <button type="button" id="closeshop" onclick="hide('shopclose')">X</button>
+</div>
+</body>
+
+</html>

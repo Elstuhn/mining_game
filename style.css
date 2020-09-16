@@ -1,0 +1,355 @@
+body {
+  background-color: black;
+  background-image: url("https://external-preview.redd.it/Swz0DHU8LxpDr96cZ42YCNHRxcRHqp7dyGaTRx731GM.png?format=pjpg&auto=webp&s=7da1a7b5649da987703bbad80d67a162d7c2567b");
+}
+h1 {
+  background-image: linear-gradient(to right, aliceblue,aqua);
+  border-radius: 25px;
+  text-align: center;
+  margin: 0px 10px;
+  cursor: default;
+}
+#actiontitle {
+  background-color: aliceblue;
+  border-radius: 20px;
+  text-align: center;
+  width: 300px;
+  position: relative;
+  left: 76.9%;
+  cursor: default;
+}
+.actions {
+  border-color: azure;
+  background-color: beige;
+  border: 3px solid black;
+  width: 275px;
+  height: 280px;
+  padding: 10px;
+  position: relative;
+  left:76.9%;
+  bottom: 10px;
+  text-align: left;
+  display: inline-block;
+  font-size: 12px;
+  cursor: default;
+}
+
+#before {
+  width: 1400px;
+  outline: none;
+  height: 800px;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  color: blueviolet;
+  font-weight: bold;
+  background-image: linear-gradient(to right, blue, aliceblue, red);
+  z-index: 10;
+}
+
+#inventorytitle {
+  position: absolute;
+  top: 70px;
+  left: 15px;
+  background-color: antiquewhite;
+  width: 140px;
+  text-align: center;
+  border-radius: 20px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+#inventory {
+  display: none;
+  background-color: whitesmoke;
+  width: 125px;
+  height: 335px;
+  position: absolute;
+  top: 100px;
+  left: 20px;
+  border: 2px solid black;
+}
+
+.inventoryitems {
+  position: absolute;
+  top: 1px;
+  left: 40px;
+  font-weight: 100;
+  font-size: 12px;
+  cursor: default;
+}
+
+.inventoryimg {
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+}
+
+#diamond {
+  position: absolute;
+  top: 232px;
+}
+#uranium {
+  position: absolute;
+  top: 295px;
+}
+#emerald {
+  position: absolute;
+  top: 265px;
+}
+#gold {
+  position: absolute;
+  top: 205px;
+}
+#copper {
+  position: absolute;
+  top: 175px;
+}
+
+#silver {
+  position: absolute;
+  top: 145px;
+}
+#pickaxe {
+  background-color: chocolate;
+  border: 1px solid black;
+  border-radius: 50%;
+  position: absolute;
+  top: 90px;
+  left: 40%;
+}
+
+#mine {
+  left: 40.5%;
+  background-color: coral;
+  top: 250px;
+  outline: none;
+  position: absolute;
+  width: 140px;
+  height: 40px;
+  transition: 0.3s;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  opacity: 0.8;
+}
+#mine:hover {opacity: 1}
+
+#money {
+  position: relative;
+  top: 25px;
+  left: 1px;
+  transition: 0.3s;
+  text-align: center;
+  width: 90px;
+  height: 38px;
+  background-color: greenyellow;
+  cursor: default;
+  border-radius: 10px;
+}
+
+#money:hover {
+  background-color: gold;
+  color: white
+}
+#stuff {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+}
+
+#autominecard {
+  position: relative;
+  top: 15px;
+  left: 1px;
+  transition: 0.3s;
+  text-align: center;
+  width: 90px;
+  height: 45px;
+  background-color: lightcoral;
+  cursor: default;
+  border-radius: 10px;
+}
+
+#autominecard:hover {
+  color: white;
+  background-color: cadetblue;
+}
+
+.automine {
+  display: inline-block;
+}
+
+#minestatus {
+  position: absolute;
+  left: 40%;
+  bottom: 85px;
+  border-radius: 10px;
+}
+
+#autominetext {
+  position: absolute;
+  left: 37.5%;
+  bottom: 50px;
+  height: 30px;
+  width: 212px;
+  opacity: 0.8;
+  text-align: center;
+  outline: none;
+  background-color: lightsalmon;
+  cursor: pointer;
+}
+
+#autominetext:hover {
+  opacity: 1;
+}
+
+#sell {
+  background-color: goldenrod;
+  opacity: 0.7;
+  width: 90px;
+  position: relative;
+  border-radius: 25px;
+  left: 90px;
+  bottom: 80px;
+  outline: none;
+  cursor: pointer;
+}
+
+#sell:hover {
+  opacity: 1;
+  background-color: gold;
+  color: beige;
+}
+
+.menu {
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+#helpscreen {
+  width: 1295px;
+  outline: none;
+  height: 690px;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  cursor: default;
+  font-size: 20px;
+  color: blueviolet;
+  font-weight: bold;
+  background-color: beige;
+  z-index: 3;
+  display: none;
+}
+
+#helpmenu {
+  color: black;
+  font-weight: bolder;
+  position: absolute;
+  left: 30%;
+  font-size: 200%;
+}
+
+#close {
+  position: absolute;
+  top: 25px;
+  right: 20px;
+  cursor: pointer;
+}
+
+#information {
+  display: inline-block;
+  position: absolute;
+  left: 50px;
+  font-size: 130%;
+  top: 70px;
+}
+
+#shopmain {
+  display: none;
+  background-color: ghostwhite;
+  width: 1295px;
+  outline: none;
+  height: 690px;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  cursor: default;
+  font-size: 20px;
+  z-index: 3;
+}
+
+#shoptitle {
+  font-size: 200%;
+  font-weight: bolder;
+  color: black;
+  position: absolute;
+  left: 20px;
+  top: 2px;
+}
+
+#shoptext {
+  position: absolute;
+  top: 110px;
+  left: 60px;
+  color: black;
+  font-size: 80%;
+  cursor: default;
+}
+
+#shopimage {
+  position: absolute;
+  top: 100px;
+  left: 10px;
+  color: black;
+  font-size: 80%;
+  cursor: default;
+}
+
+#closeshop {
+  position: absolute;
+  top: 25px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.raritytip {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 4;
+}
+
+.rarity:hover .raritytip {
+  visibility: visible;
+}
+
+#shopbuy {
+  position: absolute;
+  top: 110px;
+  left: 180px;
+  color: black;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 80%;
+  cursor: pointer;
+}
