@@ -237,9 +237,9 @@ h1 {
 }
 
 #helpscreen {
-  width: 1295px;
+  width: 100%;
   outline: none;
-  height: 690px;
+  height: 800px;
   transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   position: absolute;
@@ -280,9 +280,9 @@ h1 {
 #shopmain {
   display: none;
   background-color: ghostwhite;
-  width: 1295px;
+  width: 100%;
   outline: none;
-  height: 690px;
+  height: 800px;
   transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   position: absolute;
@@ -322,8 +322,8 @@ h1 {
 
 #closeshop {
   position: absolute;
-  top: 25px;
-  right: 20px;
+  top: 10px;
+  right: 10px;
   cursor: pointer;
 }
 
@@ -352,4 +352,25 @@ h1 {
   border-radius: 10px;
   font-size: 80%;
   cursor: pointer;
+}
+
+.yieldtip {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 4;
+}
+
+.yield:hover .yieldtip {
+  visibility: visible;
+}
+
+#yieldcss {
+  position: absolute;
+  left: 30px;
 }

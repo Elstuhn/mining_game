@@ -4,10 +4,9 @@
 
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
 	<title>Elston</title>
-  <input type="button" onclick="hide('before')" id="before" value="Before playing the game, please make sure to close all sidebars! (Click anywhere to continue)"</input>
-	<link href="style.css" rel="stylesheet" type="text/css" />
+  <input type="button" onclick="hide('before')" id="before" value="Before playing the game, make sure you're playing this at https://HTML-mining-game.elston1703.repl.co"</input>
+	<link href="style.css" rel="stylesheet">
 	<h1>Elston's Mining Sim</h1>
 </head>
 
@@ -93,6 +92,8 @@
     <p>~Ores are sorted by rarity as seen in Inventory</p>
     <p>~Automine cards can be found by mining with a 0.006% chance of being mined.</p>
     <p>~The rarest ore in the game, Uranium, has a 0.05% chance of being found without any upgrades</p>
+    <p>~The level beside the upgrade button in the shop shows your current level for that upgrade</p>
+    <p>~You can actually see the description of upgrades by hovering over them in the shop menu</p>
   </div>
   <button type="button" id="close" onclick="hide('closehelp')">X</button>
 </div>
@@ -101,13 +102,18 @@
   <p id="shoptitle">The Mine Shop</p>
   <div id="shopimage">
     <img src="data:image/png;base64,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" width="35" height="35"></img>
+    <img src=""></img>
   </div>
   <div id="shoptext">
     <div class="rarity">Upgrade Rarity
     <span class="raritytip">Increases the chance to mine rarer ores</span></div>
+    <br><br>
+    <div class="yield">Upgrade Mining Yield<span class="yieldtip">Increases the amount of ores mined per click</span></div>
   </div>
   <div id="shopbuy">
-    <button type="button">Upgrade</button>
+    <button type="button" id="raritycss" onclick="uprarity()">Upgrade for $800: Level 1</button>
+    <br><br><br>
+    <button type="button" id="yieldcss" onclick="yieldup()">Upgrade for $900: Level 1</button>
   </div>
   <button type="button" id="closeshop" onclick="hide('shopclose')">X</button>
 </div>

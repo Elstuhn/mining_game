@@ -7,7 +7,8 @@ function hide(thing) {
     document.getElementById("shopmain").style.display = "none";
   }
 }
-rarity = 0
+var rarity = 0
+var _yield = 0
 
 function show(thing) {
   if (thing == "help") {
@@ -33,7 +34,7 @@ function mine() {
   for (let i=1;i<12;i++) {
     var random = Math.floor((Math.random() * multiplier) + 1); 
     if (random == 1) {
-      var random = Math.floor((Math.random() * 5) + 1);
+      var random = Math.floor((Math.random() * 3) + 1);
       updatelogs(`Mined ${random} ${ores[count]}`);
       var ore = document.getElementById(`${ores[count]}`).innerHTML;
       var x = ore.indexOf("x");
@@ -139,7 +140,7 @@ async function automine() {
 
     for (let i=0;i<1001;i++) {
       mine()
-      await sleep(2000)
+      await sleep(1500)
     }
   }
   document.getElementById("autominetext").value = "Automine (Costs 1 automine card)";
@@ -147,6 +148,38 @@ async function automine() {
 }
 
 function uprarity() {
-  
-  rarity += 0.1;
+  var text = document.getElementById("raritycss").innerHTML;
+  var x = text.indexOf(":");
+  var level = text.slice(x+8);
+  var money = document.getElementById("money").innerHTML;
+  var y = money.indexOf("$");
+  var dollar = money.slice(y+1);
+  var required = level * 800;
+  if (money > required) {
+    level = Number(level) + 1;
+    rarity += 0.1;
+    document.getElementById("raritycss").innerHTML = text.slice(0, 13)+ String(level*800) + ": Level " + level; 
+    document.getElementById("money").innerHTML = money.slice(0, x+1) + String(dollar-required);
+
+  } else if (money < required) {
+    alert("Not enough money!")
+  }
+}
+
+function yieldup() {
+  var text = document.getElementById("yieldcss").innerHTML;
+  var x = text.indexOf(":");
+  var level = text.slice(x+8);
+  var money = document.getElementById("money").innerHTML;
+  var y = money.indexOf("$");
+  var dollar = money.slice(y+1);
+  var required = level * 900;
+  if (dollar > required) {
+    level = Number(level) + 1;
+    _yield ++;
+    document.getElementById("yieldcss").innerHTML = text.slice(0, 13) + String(level*900) + `: Level ${level}`;
+    document.getElementById("money").innerHTML = money.slice(0, x+1) + String(dollar-required);
+  } else if (money < required) {
+    alert("Not enough money!")
+  }
 }
