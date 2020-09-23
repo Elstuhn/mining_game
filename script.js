@@ -5,16 +5,21 @@ function hide(thing) {
     document.getElementById("helpscreen").style.display = "none";
   } else if (thing == "shopclose") {
     document.getElementById("shopmain").style.display = "none";
+  } else if (thing == "uncover") {
+    document.getElementById("uncover").style.visibility = "hidden";
   }
 }
-var rarity = 0
-var _yield = 0
+var rarity = 0;
+var _yield = 0;
+var rebirthAmt = 0;
 
 function show(thing) {
   if (thing == "help") {
     document.getElementById("helpscreen").style.display = "inline-block";
   } else if (thing == "shop") {
     document.getElementById("shopmain").style.display = "inline-block";
+  } else if (thing == "uncover") {
+    document.getElementById("uncover").style.visibility = "visible";
   }
 }
 
@@ -28,13 +33,13 @@ function sleep(ms) {
 
 ores = ['stone', 'coal', 'iron', 'titanium', 'tin', 'silver', 'copper', 'gold', 'diamond', 'emerald', 'uranium']
 
-function mine() {
-  var count = 0
-  var multiplier = 1
+async function mine() {
+  var count = 0;
+  var multiplier = 1;
   for (let i=1;i<12;i++) {
     var random = Math.floor((Math.random() * multiplier) + 1); 
     if (random == 1) {
-      var random = Math.floor((Math.random() * 3) + 1);
+      var random = Math.floor((Math.random() * 3+_yield) + 1);
       updatelogs(`Mined ${random} ${ores[count]}`);
       var ore = document.getElementById(`${ores[count]}`).innerHTML;
       var x = ore.indexOf("x");
@@ -42,23 +47,26 @@ function mine() {
       amount = Number(amount)+random;
       document.getElementById(ores[count]).innerHTML = ore.slice(0, x+1)+String(amount);
     }
-    count++
-    multiplier*=(2.1-rarity)
-    var random = Math.floor((Math.random() * 16000)+1)
-    if (random==1) {
-      updatelogs("Mined 1 Automine Card!");
-      var automine = document.getElementById("autominecard").innerHTML;
-      var x = automine.indexOf(":");
-      var autominecard = automine.slice(x+2);
-      autominecard = Number(autominecard) + 1;
-      autominecard = String(autominecard);
-      document.getElementById("autominecard").innerHTML = automine.slice(0, x+2) + autominecard;
-    }
+    count++;
+    multiplier*=(2.1-rarity);
   }
+  var random = Math.floor((Math.random() * 16000)+1)
+  if (random==1) {
+    updatelogs("Mined 1 Automine Card!");
+    var automine = document.getElementById("autominecard").innerHTML;
+    var x = automine.indexOf(":");
+    var autominecard = automine.slice(x+2);
+    autominecard = Number(autominecard) + 1;
+    autominecard = String(autominecard);
+    document.getElementById("autominecard").innerHTML = automine.slice(0, x+2) + autominecard;
+    show("uncover");
+    await sleep(4000);
+    hide("uncover");
+    }
 }
 
 function sell() {
-  var money = 0
+  var money = 0;
   for (let i=0;i<11;i++) {
     console.log(document.getElementById(`${ores[i]}`).innerHTML);
     var ore = document.getElementById(`${ores[i]}`).innerHTML;
@@ -88,10 +96,10 @@ function sell() {
     } else {
       money += Number(amount) * 35;
     }
-    document.getElementById(`${ores[i]}`).innerHTML = ore.slice(0, x+1) + "0"
+    document.getElementById(`${ores[i]}`).innerHTML = ore.slice(0, x+1) + "0";
   }
   money = Math.floor(money*100)/100;
-  updatelogs(`Sold all ores for $${money}`)
+  updatelogs(`Sold all ores for $${money}`);
   var text = document.getElementById("money").innerHTML;
   var x = text.indexOf("$");
   var totalmoney = text.slice(x+1);
@@ -139,8 +147,8 @@ async function automine() {
     document.getElementById("autominecard").innerHTML = automine.slice(0, 16)+String(cards);
 
     for (let i=0;i<1001;i++) {
-      mine()
-      await sleep(1500)
+      mine();
+      await sleep(1500);
     }
   }
   document.getElementById("autominetext").value = "Automine (Costs 1 automine card)";
@@ -154,15 +162,17 @@ function uprarity() {
   var money = document.getElementById("money").innerHTML;
   var y = money.indexOf("$");
   var dollar = money.slice(y+1);
-  var required = level * 800;
-  if (money > required) {
+  var required = level * 1700;
+  dollar = Number(dollar);
+  if (dollar >= required) {
     level = Number(level) + 1;
     rarity += 0.1;
-    document.getElementById("raritycss").innerHTML = text.slice(0, 13)+ String(level*800) + ": Level " + level; 
-    document.getElementById("money").innerHTML = money.slice(0, x+1) + String(dollar-required);
+    document.getElementById("raritycss").innerHTML = text.slice(0, 13)+ String(level*1700) + ": Level " + level; 
+    x = money.indexOf(":")
+    document.getElementById("money").innerHTML = money.slice(0, x+1) + ` $${String(dollar-required)}`;
 
-  } else if (money < required) {
-    alert("Not enough money!")
+  } else {
+    alert("Not enough money!");
   }
 }
 
@@ -173,13 +183,32 @@ function yieldup() {
   var money = document.getElementById("money").innerHTML;
   var y = money.indexOf("$");
   var dollar = money.slice(y+1);
-  var required = level * 900;
-  if (dollar > required) {
+  var required = level * 1600;
+  dollar = Number(dollar);
+  if (dollar >= required) {
     level = Number(level) + 1;
     _yield ++;
-    document.getElementById("yieldcss").innerHTML = text.slice(0, 13) + String(level*900) + `: Level ${level}`;
-    document.getElementById("money").innerHTML = money.slice(0, x+1) + String(dollar-required);
-  } else if (money < required) {
-    alert("Not enough money!")
+    document.getElementById("yieldcss").innerHTML = text.slice(0, 13) + String(level*1600) + `: Level ${level}`;
+    console.log(dollar-required);
+    console.log(text.slice(0, 13) + String(level*900) + `: Level ${level}`);
+    x = money.indexOf(":");
+    document.getElementById("money").innerHTML = money.slice(0, x+1) + ` $${String(dollar-required)}`;
+  } else {
+    alert("Not enough money!");
+  }
+}
+
+function rebirth() {
+  var money = document.getElementById("money").innerHTML;
+  var y = money.indexOf("$");
+  var dollar = money.slice(y+1);
+  var required = rebirthAmt*75000;
+  var cur_required = document.getElementById("rebirth").innerHTML;
+  var x = cur_required.indexOf("$");
+  cur_required = cur_required.slice(x+1);
+  dollar = Number(dollar);
+  if (dollar > required) {
+    rebirthAmt++;
+    
   }
 }
